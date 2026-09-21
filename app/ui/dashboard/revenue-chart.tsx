@@ -1,17 +1,24 @@
+import { generateYAxis } from '@/app/lib/utils';
+import { CalendarIcon } from '@heroicons/react/24/outline';
+import { lusitana } from '@/app/ui/fonts';
+import { fetchRevenue } from '@/app/lib/data';
+
 type Revenue = {
     month: string;
     revenue: number;
 };
 
-export default async function RevenueChart({
-    revenue,
-}: {
-    revenue: Revenue[];
-}) {
-    if (!revenue || revenue.length === 0) {
-        return <p className="mt-4 text-gray-400">No data available.</p>;
-    }
-
+export default async function RevenueChart(
+    // {
+    // revenue,
+    // }: {
+    // revenue: Revenue[];
+    // }
+) {
+    // if (!revenue || revenue.length === 0) {
+    //     return <p className="mt-4 text-gray-400">No data available.</p>;
+    // }
+    const revenue = await fetchRevenue(); // Fetch data inside the component
     const chartHeight = 350;
     const yAxisLabels = ['$0K'];
     const topLabel = Math.max(...revenue.map((m) => m.revenue));
