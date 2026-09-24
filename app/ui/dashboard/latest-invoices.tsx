@@ -1,4 +1,5 @@
 import { fetchLatestInvoices } from '@/app/lib/data';
+import Image from 'next/image';
 type LatestInvoice = {
     id: string;
     name: string;
@@ -27,7 +28,7 @@ export default async function LatestInvoices(
                                 }`}
                         >
                             <div className="flex items-center">
-                                <img
+                                <Image
                                     src={invoice.image_url}
                                     alt={`${invoice.name}'s profile picture`}
                                     className="mr-4 h-8 w-8 rounded-full"
